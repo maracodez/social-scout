@@ -1,0 +1,116 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #f9f9f7;
+  color: #1a1a1a;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.run-btn {
+  background-color: #35D07F; /* Celo Green */
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.run-btn:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+.report {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 1rem;
+}
+
+/* Responsive App Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: system-ui, sans-serif;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: white;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Grid for the result cards */
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default: 1 column for mobile */
+  gap: 24px;
+}
+
+/* Medium screens (Tablets) and up: 2 columns */
+@media (min-width: 768px) {
+  .results-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .app-container {
+    flex-direction: column; /* Stack sidebar on top of content */
+  }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .sidebar nav {
+    display: flex;
+    overflow-x: auto;
+    padding: 8px 16px !important;
+    gap: 8px;
+  }
+  .sidebar nav > div {
+    margin-bottom: 0 !important;
+    white-space: nowrap;
+  }
+  .header-actions {
+    display: none; /* Hide 'Last updated' on mobile to save space */
+  }
+  .content-padding {
+    padding: 16px !important;
+  }
+}
