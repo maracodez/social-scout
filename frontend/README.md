@@ -1,16 +1,16 @@
-# React + Vite
+# 🕵️ SocialScout
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An autonomous AI agent that tracks competitors' social media posts and pricing for small business owners — paying per-use via Celo's `buy` marketplace (x402).
 
-Currently, two official plugins are available:
+## 📂 Project Structure
+- **`/frontend`**: React + Vite + Tailwind CSS dashboard for business owners to manage competitors and view billing.
+- **`/backend`**: Node.js + Express API that executes the `@celo/buy` x402 sandbox payments.
+- **`/contracts`**: ERC-8004 Agent Identity minting scripts (proving on-chain agent ownership).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 How to Run Locally
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Start the Backend (Agent Engine)
+```bash
+cd backend
+npm install
+node server.js
