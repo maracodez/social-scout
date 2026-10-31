@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import AuthScreen from './components/AuthScreen';
 import { Zap } from 'lucide-react';
 import Sidebar from './components/sidebar';
 import DashboardView from './components/DashboardView';
@@ -6,19 +7,36 @@ import CompetitorsView from './components/CompetitorsView';
 import BillingView from './components/BillingView';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('dashboard');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResults] = useState(null);
-  
-  const [competitors, setCompetitors] = useState(['Celo', 'HyperScale_AI', 'CloudMetrics']);
-  const [newCompetitor, setNewCompetitor] = useState('');
-  const [businessDescription, setBusinessDescription] = useState('');
-  const [isDiscovering, setIsDiscovering] = useState(false);
-  
-  const [balance, setBalance] = useState(14.80);
-  const [billingHistory, setBillingHistory] = useState([]);
-  const [scanCount, setScanCount] = useState(0);
+	const [user, setUser] = useState(null);
+	const [isAuthLoading, setIsAuthLoading] = useState(true);
+	
+	const [activeTab, setActiveTab] = useState('dashboard');
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isGenerating, setIsGenerating] = useState(false);
+	const [results, setResults] = useState(null);
+	
+	const [competitors, setCompetitors] = useState(['Celo', 'HyperScale_AI', 'CloudMetrics']);
+	const [newCompetitor, setNewCompetitor] = useState('');
+	const [businessDescription, setBusinessDescription] = useState('');
+	const [isDiscovering, setIsDiscovering] = useState(false);
+	
+	const [balance, setBalance] = useState(14.80);
+	const [billingHistory, setBillingHistory] = useState([]);
+	const [scanCount, setScanCount] = useState(0);
+
+	// Check if user is already logged in when page loads
+	useEffect(() => {
+		const loggedInUser = localStorage.getItem('socialscout_current_user');
+		if (loggedInUser) {
+		setUser(JSON.parse(loggedInUser));
+		}
+		setIsAuthLoading(false);
+	}, []);
+
+	const handleLogout = () => {
+		localStorage.removeItem('socialscout_current_user');
+		setUser(null);
+	};
 
   const handleDiscover = async () => {
     if (!businessDescription) return;
@@ -85,10 +103,21 @@ export default function App() {
     }
   };
 
+	if (isAuthLoading) return <div className="min-h-screen bg-slate-50 flex items-center justify-center">Loading...</div>;
+	
+	if (!user) {
+		return <AuthScreen onLogin={setUser} />;
+	}
   return (
     <div className="min-h-screen bg-[#f8fafc] flex flex-col md:flex-row font-sans text-slate-900">
       
-      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} balance={balance} />
+      <Sidebar 
+			activeTab={activeTab} 
+			setActiveTab={setActiveTab} 
+			balance={balance}
+			user={user} 
+        	handleLogout={handleLogout}  
+	  />
 
       <main className="flex-1 flex flex-col min-w-0">
 			<header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8">

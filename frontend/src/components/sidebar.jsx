@@ -1,11 +1,13 @@
-import { Wallet, Activity, ShieldCheck } from 'lucide-react';
+import { Wallet, Activity, ShieldCheck, LogOut  } from 'lucide-react';
+import logo from '../../public/logo.png'
 
-export default function Sidebar({ activeTab, setActiveTab, balance }) {
+
+export default function Sidebar({ activeTab, setActiveTab, balance, user, handleLogout }) {
   return (
         <aside className="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-slate-200 flex flex-col shrink-0">
-            <div className="h-16 flex items-center px-6 border-b border-slate-200 gap-3">
-                <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white font-bold">S</div>
-                <span className="font-bold text-lg tracking-tight">SocialScout</span>
+            <div className="h-15 flex items-center px-2 border-b border-slate-200 ">
+                <img src={logo} alt="SocialScout Logo" className="h-8 object-contain" />
+                <span className="font-bold text-xl tracking-tight text-green-800">SocialScout</span>
             </div>
             
             <nav className="flex-1 p-4 space-y-2 flex md:flex-col overflow-x-auto md:overflow-visible">
@@ -43,6 +45,24 @@ export default function Sidebar({ activeTab, setActiveTab, balance }) {
                     <span className="text-xs text-slate-500 block mb-1">Available Escrow</span>
                     <span className="text-lg font-semibold">{balance.toFixed(2)} <span className="text-xs text-slate-500">USDC on Celo</span></span>
                 </div>
+                </div>
+            </div>
+
+            {/* USER PROFILE */}
+            <div className="p-4 border-t border-slate-200">
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-celo text-slate-900 flex items-center justify-center font-bold">
+                        {user.name.charAt(0).toUpperCase()}
+                        </div>
+                        <div className="overflow-hidden">
+                        <p className="text-sm font-medium text-slate-900 truncate">{user.name}</p>
+                        <p className="text-xs text-slate-500 truncate">{user.email}</p>
+                        </div>
+                    </div>
+                    <button onClick={handleLogout} className="text-slate-400 hover:text-red-500 transition-colors" title="Log out">
+                        <LogOut size={18} />
+                    </button>
                 </div>
             </div>
         </aside>
