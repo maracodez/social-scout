@@ -2,7 +2,9 @@ import { Wallet, Activity, ShieldCheck, LogOut  } from 'lucide-react';
 import logo from '../../public/logo.jpeg'
 
 
+
 export default function Sidebar({ activeTab, setActiveTab, balance, user, handleLogout }) {
+
   return (
         <aside className="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-slate-200 flex flex-col shrink-0">
             <div className="h-15 flex items-center px-2 border-b border-slate-200 ">
@@ -35,7 +37,7 @@ export default function Sidebar({ activeTab, setActiveTab, balance, user, handle
             <div className="p-4 border-t border-slate-200 hidden md:block">
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
                 <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Wallet</span>
+                    <a onClick={() => setActiveTab('billing')} className="text-xs font-semibold text-slate-500 uppercase tracking-wider cursor-pointer">Wallet</a>
                     <span className="flex items-center gap-1 text-xs font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
                     <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Sandbox
                     </span>
@@ -60,7 +62,7 @@ export default function Sidebar({ activeTab, setActiveTab, balance, user, handle
                         <p className="text-xs text-slate-500 truncate">{user.email}</p>
                         </div>
                     </div>
-                    <button onClick={handleLogout} className="text-slate-400 hover:text-red-500 transition-colors" title="Log out">
+                    <button onClick={handleLogout} className="text-slate-400 hover:text-red-500 transition-colors cursor-pointer" title="Log out">
                         <LogOut size={18} />
                     </button>
                 </div>

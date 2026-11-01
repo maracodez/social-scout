@@ -78,7 +78,7 @@ export default function App() {
           ...item,
           badge: item.competitor === 'Celo' ? 'PRICING DETECTED' : 'DISCOUNT ALERT',
           badgeColor: item.competitor === 'Celo' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800',
-          price: item.competitor === 'Celo' ? '$49/mo' : '$29/mo',
+          price: item.competitor === 'Celo' ? '$49/mo' : item.competitor === 'HyperScale_AI' ? '$29/mo' : '$39/mo',
           diff: item.competitor === 'Celo' ? 'was $89/mo' : 'up from $20',
           confidence: '99.4%',
         }));

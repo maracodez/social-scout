@@ -1,9 +1,30 @@
+import { useState } from 'react';
+import { CheckCircle2 } from 'lucide-react';
+
 export default function CompetitorsView({ 
   competitors, setCompetitors, 
   newCompetitor, setNewCompetitor,
   businessDescription, setBusinessDescription, 
   isDiscovering, handleDiscover 
 }) {
+
+    const [showSuccess, setShowSuccess] = useState(false);
+
+    // Wrapper function to handle discovery and trigger the success state
+    const onDiscoverClick = async () => {
+        // We call the original handleDiscover function passed from App.jsx
+        await handleDiscover();
+        
+        // Once it finishes, show the success message
+        setShowSuccess(true);
+        
+        // Hide the success message after 3 seconds
+        setTimeout(() => {
+        setShowSuccess(false);
+        }, 3000);
+    };
+
+
   return (
     <div className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
         <div className="mb-8">
@@ -24,18 +45,26 @@ export default function CompetitorsView({
                 placeholder="e.g. I am building a Web3 payment gateway..." 
                 value={businessDescription}
                 onChange={(e) => setBusinessDescription(e.target.value)}
+                disabled={isDiscovering || showSuccess}
                 className="flex-1 px-4 py-2.5 bg-white border hover:border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 transition-all text-sm"
             />
             <button 
-                onClick={handleDiscover}
+                onClick={onDiscoverClick}
                 disabled={isDiscovering || !businessDescription}
                 className="bg-[#FCFF52] hover:bg-yellow-400 disabled:opacity-50 text-slate-900 px-6 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 min-w-[150px] cursor-pointer"
             >
                 {isDiscovering ? (
-                <><div className="w-4 h-4 border-2 border-slate-900 border-t-transparent rounded-full animate-spin"></div> Finding...</>
-                ) : (
+                    <>
+                        <div className="w-4 h-4 border-2 border-slate-900 border-t-transparent rounded-full animate-spin"></div> 
+                        Finding...
+                    </>
+                    ) : showSuccess ? (
+                    <>
+                        <CheckCircle2 size={18} /> Success!
+                    </>
+                    ) : (
                     "Auto-Discover"
-                )}
+                    )}
             </button>
             </div>
         </div>

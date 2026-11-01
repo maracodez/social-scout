@@ -97,7 +97,7 @@ export default function AuthScreen({ onLogin }) {
                     onClick={() => setIsLogin(!isLogin)} 
                     className="text-sm font-medium text-slate-600 hover:text-slate-900 cursor-pointer"
                     >
-                    {isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
+                    	{isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
                     </button>
                 </div>
             </div>
