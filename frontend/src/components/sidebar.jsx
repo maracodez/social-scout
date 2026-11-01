@@ -1,12 +1,12 @@
 import { Wallet, Activity, ShieldCheck, LogOut  } from 'lucide-react';
-import logo from '../../public/logo.png'
+import logo from '../../public/logo.jpeg'
 
 
 export default function Sidebar({ activeTab, setActiveTab, balance, user, handleLogout }) {
   return (
         <aside className="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-slate-200 flex flex-col shrink-0">
             <div className="h-15 flex items-center px-2 border-b border-slate-200 ">
-                <img src={logo} alt="SocialScout Logo" className="h-8 object-contain" />
+                <img src={logo} alt="SocialScout Logo" className="h-18 object-contain" />
                 <span className="font-bold text-xl tracking-tight text-green-800">SocialScout</span>
             </div>
             

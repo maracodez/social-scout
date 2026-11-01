@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import logo from '../../public/logo.png'
+import logo from '../../public/logo.jpeg'
 
 export default function AuthScreen({ onLogin }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -47,8 +47,8 @@ export default function AuthScreen({ onLogin }) {
         {/* Left Side - Form */}
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24 bg-white z-10 shadow-2xl">
             <div className="mx-auto w-full max-w-sm lg:w-96">
-                <div className="flex items-center  mb-8 ml-12">
-                    <img src={logo} alt="SocialScout Logo" className="h-9 object-contain" />
+                <div className="flex items-center  mb-8">
+                    <img src={logo} alt="SocialScout Logo" className="h-22 object-contain" />
                     <span className="font-bold text-4xl tracking-tight text-green-800">SocialScout</span>
                 </div>
             
