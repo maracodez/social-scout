@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Zap } from 'lucide-react';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/sidebar';
 import DashboardView from './components/DashboardView';
 import CompetitorsView from './components/CompetitorsView';
 import BillingView from './components/BillingView';
