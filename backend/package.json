@@ -2,7 +2,7 @@
   "name": "social-scout",
   "version": "1.0.0",
   "description": "An autonomous AI agent that tracks competitors' social media posts and pricing for small business owners — paying per-use via Celo's `buy` marketplace (x402), with no API keys or subscriptions required.",
-  "homepage": "https://github.com/maracodez/social-scout#readme",
+  "homepage": "https://github.com/maracodez/social-scout/frontend",
   "bugs": {
     "url": "https://github.com/maracodez/social-scout/issues"
   },
@@ -15,12 +15,18 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'No build step needed'",
+    "start": "node server.js"
   },
   "keywords": [],
   "dependencies": {
     "@celo/buy": "^0.8.5",
     "cors": "^2.8.6",
-    "express": "^5.3.0"
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "mongodb": "^7.7.0",
+    "mongoose": "^9.11.3",
+    "openai": "^7.50.0",
+    "twitter-api-v2": "^1.31.0"
   }
 }
