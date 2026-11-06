@@ -27,7 +27,7 @@ function runCeloBuyCLI(handle, taskId) {
 	let mockPrice = "Checked via x402 gateway";
 
 	if (handle.toLowerCase() === 'celo') {
-		mockPost = "Excited to announce our new x402 agentic payments framework! Developers can now pay for APIs seamlessly using USDC. 🚀";
+		mockPost = "Excited to announce our new x402 agentic payments framework! Developers can now pay for APIs seamlessly using USDC.";
 		mockPrice = "$0.02 per API call (x402)";
 	} else if (handle.toLowerCase() === 'uniswap') {
 		mockPost = "v4 is officially here. Liquidity pools are now fully customizable, and protocol fees have been lowered to 0.25%.";
